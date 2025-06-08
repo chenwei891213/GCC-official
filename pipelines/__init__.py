@@ -1,0 +1,2 @@
+from .pipeline import OneStepLaplacianInpaintPipeline
+from .inpaint_pipeline import DiffusionInpaintPipeline

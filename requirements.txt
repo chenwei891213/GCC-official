@@ -1,0 +1,22 @@
+# utility
+tqdm==4.66.5
+scikit-image==0.21.0
+imageio==2.31.1
+Pillow==10.2.0
+numpy==1.24.1
+natsort==8.4.0
+opencv-python==4.10.0.84
+
+# We use pytorch pip instead because conda is mess up
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.0.1+cu118
+torchvision==0.15.2+cu118
+torchaudio==2.0.2+cu118
+
+# Diffusers dependencies
+accelerate==0.34.2
+datasets==2.21.0
+diffusers==0.30.2
+transformers==4.36.0
+xformers==0.0.20
+huggingface_hub==0.24.6
