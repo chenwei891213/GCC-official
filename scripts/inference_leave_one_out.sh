@@ -11,5 +11,5 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
     --cache_dir /path/to/your/cache_directory \
     --output_dir /path/to/your/output_directory \
     --model_path /path/to/your/trained_model \
-    --color_checker_path /path/to/your/color_checker.jpg \
+    --color_checker_path color_chart.jpg \
     --batch_size 20
