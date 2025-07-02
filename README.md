@@ -7,11 +7,18 @@
 <div align="center">
 
 🚀 [Paper](https://arxiv.org/abs/2502.17435) | 
-🏠  [Project Page](https://chenwei891213.github.io/GCC/) 
+🏠  [Project Page](https://chenwei891213.github.io/GCC/)
+| 🎬 [Video](https://www.youtube.com/watch?v=NRlQ7QJKpuM)
 
 </div>
 
 ![Teaser Image](assets/teaser.png)
+
+# 📰 NEWS
+- **[2025/07/02]**: Released pre-trained model checkpoints for GCC trained on [NUS-8](https://huggingface.co/StevenChangWei/gcc_train_on_nus8) and [Gehler](https://huggingface.co/StevenChangWei/gcc_train_on_gehler) datasets.
+- **[2025/07/02]**: Released pre-processed [NUS-8](https://huggingface.co/datasets/StevenChangWei/nus8-dataset) and [Gehler](https://huggingface.co/datasets/StevenChangWei/gehler-dataset) datasets.
+- **[2025/06/09]**: Released train, inference, and evaluation code.
+- **[2025/03/10]**: Our paper has been accepted to CVPR 2025!
 
 # 🛠️ Installation
 
@@ -29,7 +36,22 @@ pip install -r requirements.txt
 
 Processes black level (darkness level) and saturation level correction for color constancy datasets. Extracts and saves metadata in JSON format with illuminant information.
 
-**Pre-processed datasets are available for download: [Link](https://example.com/preprocessed_datasets.zip)**
+**Pre-processed datasets are available for download:**
+- **NUS-8 Dataset**: 🤗 [StevenChangWei/nus8-dataset](https://huggingface.co/datasets/StevenChangWei/nus8-dataset)
+- **Gehler Dataset**: 🤗 [StevenChangWei/gehler-dataset](https://huggingface.co/datasets/StevenChangWei/gehler-dataset)
+---
+
+### 📥 Download via `huggingface-cli`
+
+You can download the dataset with the following command:
+
+```bash
+huggingface-cli download StevenChangWei/{gehler-dataset,nus8-dataset} \
+  --repo-type dataset \
+  --local-dir ./data \
+  --resume-download \
+  --max-workers 32
+```
 
 ## Supported Datasets
 
@@ -138,7 +160,10 @@ bash scripts/train_leave_one_out.sh
 
 Evaluates trained models on preprocessed datasets and calculates angular error statistics.
 
-**Pre-trained model checkpoints are available for download: [Link](https://example.com/pretrained_models.zip)**
+**Pre-trained model checkpoints are available for download:**
+
+- **GCC trained on NUS-8**: 🤗 [StevenChangWei/gcc_train_on_nus8](https://huggingface.co/StevenChangWei/gcc_train_on_nus8)
+- **GCC trained on Gehler**: 🤗 [StevenChangWei/gcc_train_on_gehler](https://huggingface.co/StevenChangWei/gcc_train_on_gehler)
 
 ## Usage
 
