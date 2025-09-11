@@ -8,16 +8,17 @@
 
 🚀 [Paper](https://arxiv.org/abs/2502.17435) | 
 🏠  [Project Page](https://chenwei891213.github.io/GCC/)
-| 🎬 [Video](https://www.youtube.com/watch?v=NRlQ7QJKpuM)
+| 🎬 [Video](https://www.youtube.com/watch?v=NRlQ7QJKpuM) | 🤗 [Demo](https://huggingface.co/spaces/StevenChangWei/GCC-Demo)
 
 </div>
 
 ![Teaser Image](assets/teaser.png)
 
 # 📰 NEWS
+- **[2025/09/12]**: Released interactive demo on [Hugging Face Spaces](https://huggingface.co/spaces/StevenChangWei/GCC-Demo).
 - **[2025/07/02]**: Released pre-trained model checkpoints for GCC trained on [NUS-8](https://huggingface.co/StevenChangWei/gcc_train_on_nus8) and [Gehler](https://huggingface.co/StevenChangWei/gcc_train_on_gehler) datasets.
 - **[2025/07/02]**: Released pre-processed [NUS-8](https://huggingface.co/datasets/StevenChangWei/nus8-dataset) and [Gehler](https://huggingface.co/datasets/StevenChangWei/gehler-dataset) datasets.
-- **[2025/06/09]**: Released train, inference, and evaluation code.
+- **[2025/06/09]**: Released training, inference, and evaluation code.
 - **[2025/03/10]**: Our paper has been accepted to CVPR 2025!
 
 # 🛠️ Installation
@@ -34,16 +35,15 @@ pip install -r requirements.txt
 
 # 🔧 Data Preprocessing
 
-Processes black level (darkness level) and saturation level correction for color constancy datasets. Extracts and saves metadata in JSON format with illuminant information.
+We provide pre-processed datasets ready for immediate use, or you can process raw datasets yourself using our preprocessing pipeline.
 
-**Pre-processed datasets are available for download:**
+## 🚀 Quick Start (Recommended)
+
+**Pre-processed datasets are available on Hugging Face:**
 - **NUS-8 Dataset**: 🤗 [StevenChangWei/nus8-dataset](https://huggingface.co/datasets/StevenChangWei/nus8-dataset)
 - **Gehler Dataset**: 🤗 [StevenChangWei/gehler-dataset](https://huggingface.co/datasets/StevenChangWei/gehler-dataset)
----
 
 ### 📥 Download via `huggingface-cli`
-
-You can download the dataset with the following command:
 
 ```bash
 huggingface-cli download StevenChangWei/{gehler-dataset,nus8-dataset} \
@@ -53,65 +53,10 @@ huggingface-cli download StevenChangWei/{gehler-dataset,nus8-dataset} \
   --max-workers 32
 ```
 
-## Supported Datasets
+## 🔄 Custom Preprocessing
 
-- [NUS-8 Dataset](http://cvil.eecs.yorku.ca/projects/public_html/illuminant/illuminant.html)
-- [Gehler-Shi Dataset](https://www2.cs.sfu.ca/~colour/data/shi_gehler/)
+If you prefer to process raw datasets yourself, see our detailed preprocessing guide: [**Data Preprocessing Guide**](docs/DATA_PREPROCESSING.md)
 
-## Dataset Format
-
-### NUS-8 Dataset
-```
-dataset_root/
-├── Camera1DsMkIII/
-│   ├── PNG/
-│   │   └── *.png
-│   └── ground_truth/
-│       └── Camera1DsMkIII_gt.mat
-├── Canon600D/
-│   ├── PNG/
-│   │   └── *.png
-│   └── ground_truth/
-│       └── Canon600D_gt.mat
-└── ... (other cameras)
-```
-
-### Gehler Dataset
-```
-dataset_root/
-├── images/
-│   └── *.png
-├── coordinates/
-│   └── *_macbeth.txt
-└── ground_truth.mat
-```
-
-## Usage
-
-To preprocess the datasets
-
-```bash
-# NUS-8 Dataset
-python process_dataset.py \
-    --dataset_type NUS8 \
-    --dataset_root /path/to/nus8_dataset \
-    --output_root /path/to/processed_nus8
-
-# Gehler Dataset  
-python process_dataset.py \
-    --dataset_type Gehler \
-    --dataset_root /path/to/gehler_dataset \
-    --output_root /path/to/processed_gehler
-```
-
-## Output Structure
-
-```
-output_root/
-├── images/        # Processed data
-├── mask/          # Binary masks for ColorChecker locations
-└── all_cameras_meta.json   # Metadata for all processed images
-```
 # 🔥 Training
 
 Fine-tunes Stable Diffusion 2 inpainting model for color constancy tasks.
@@ -242,13 +187,12 @@ Worst 25% (mean): 4.67
 # 📝 Citation
 
 ```bibtex
-@misc{chang2025gccgenerativecolorconstancy,
-      title={GCC: Generative Color Constancy via Diffusing a Color Checker}, 
-      author={Chen-Wei Chang and Cheng-De Fan and Chia-Che Chang and Yi-Chen Lo and Yu-Chee Tseng and Jiun-Long Huang and Yu-Lun Liu},
-      year={2025},
-      eprint={2502.17435},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2502.17435}, 
+@InProceedings{Chang_2025_CVPR,
+    author    = {Chang, Chen-Wei and Fan, Cheng-De and Chang, Chia-Che and Lo, Yi-Chen and Tseng, Yu-Chee and Huang, Jiun-Long and Liu, Yu-Lun},
+    title     = {GCC: Generative Color Constancy via Diffusing a Color Checker},
+    booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
+    month     = {June},
+    year      = {2025},
+    pages     = {10868-10878}
 }
 ```
